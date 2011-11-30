@@ -12,25 +12,21 @@ def setupMenu(editor):
    prioVeryHigh = QAction("Set Priority to Very High", editor)
    prioVeryHigh.setEnabled(True)
    prioVeryHigh.setText("Set Priority to Very High")
-   prioVeryHigh.setToolTip(_("Set Priority to Very High"))
    editor.connect(prioVeryHigh, SIGNAL("triggered()"), lambda e=editor: priorityVeryHigh(e))
    
    prioHigh = QAction("Set Priority to High", editor)
    prioHigh.setEnabled(True)
    prioHigh.setText("Set Priority to High")
-   prioHigh.setToolTip(_("Set Priority to High"))
    editor.connect(prioHigh, SIGNAL("triggered()"), lambda e=editor: priorityHigh(e))
       
    prioLow = QAction("Set Priority to Low", editor)
    prioLow.setEnabled(True)
    prioLow.setText("Set Priority to Low")
-   prioLow.setToolTip(_("Set Priority to Low"))
    editor.connect(prioLow, SIGNAL("triggered()"), lambda e=editor: priorityLow(e))
    
    prioNormal = QAction("Reset Priority to Normal", editor)
    prioNormal.setEnabled(True)
    prioNormal.setText("Reset Priority to Normal")
-   prioNormal.setToolTip(_("Reset Priority to Normal"))
    editor.connect(prioNormal, SIGNAL("triggered()"), lambda e=editor: priorityNormal(e))
    
    editor.dialog.menuActions.addSeparator()
