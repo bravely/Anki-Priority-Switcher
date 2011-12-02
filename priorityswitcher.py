@@ -8,6 +8,13 @@ from ankiqt import mw
 from anki.hooks import addHook
 from anki.cards import Card
 
+# Constants. Change these if you change the tags for your priorities.
+
+PRIORITYVERYHIGH = "PriorityVeryHigh"
+PRIORITYHIGH = "PriorityHigh"
+PRIORITYLOW = "PriorityLow"
+
+# Menu and UI Stuffs.
 def setupMenu(editor):
    prioVeryHigh = QAction("Set Priority to Very High", editor)
    prioVeryHigh.setEnabled(True)
@@ -36,31 +43,30 @@ def setupMenu(editor):
    prioritySubMenu.addAction(prioLow)
    prioritySubMenu.addAction(prioNormal)
 
-
+# The core workings of the plugin.
 # Since Anki doesn't provide access to the HasTag() function, I essentially have to just delete and recreate the tags for each instance.
-
 def priorityVeryHigh(editor):
-    editor.deleteTags(tags="PriorityVeryHigh", label=False)
-    editor.deleteTags(tags="PriorityHigh", label=False)
-    editor.deleteTags(tags="PriorityLow", label=False)
-    editor.addTags(tags="PriorityVeryHigh", label=False,)
+    editor.deleteTags(tags=PRIORITYVERYHIGH, label=False)
+    editor.deleteTags(tags=PRIORITYHIGH, label=False)
+    editor.deleteTags(tags=PRIORITYLOW, label=False)
+    editor.addTags(tags=PRIORITYVERYHIGH, label=False,)
 
 def priorityHigh(editor):
-    editor.deleteTags(tags="PriorityVeryHigh", label=False)
-    editor.deleteTags(tags="PriorityHigh", label=False)
-    editor.deleteTags(tags="PriorityLow", label=False)
-    editor.addTags(tags="PriorityHigh", label=False,)
+    editor.deleteTags(tags=PRIORITYVERYHIGH, label=False)
+    editor.deleteTags(tags=PRIORITYHIGH, label=False)
+    editor.deleteTags(tags=PRIORITYLOW, label=False)
+    editor.addTags(tags=PRIORITYHIGH, label=False,)
 
 def priorityLow(editor):
-    editor.deleteTags(tags="PriorityVeryHigh", label=False)
-    editor.deleteTags(tags="PriorityHigh", label=False)
-    editor.deleteTags(tags="PriorityLow", label=False)
-    editor.addTags(tags="PriorityLow", label=False,)
+    editor.deleteTags(tags=PRIORITYVERYHIGH, label=False)
+    editor.deleteTags(tags=PRIORITYHIGH, label=False)
+    editor.deleteTags(tags=PRIORITYLOW, label=False)
+    editor.addTags(tags=PRIORITYLOW, label=False,)
 
 def priorityNormal(editor):
-    editor.deleteTags(tags="PriorityVeryHigh", label=False)
-    editor.deleteTags(tags="PriorityHigh", label=False)
-    editor.deleteTags(tags="PriorityLow", label=False)
+    editor.deleteTags(tags=PRIORITYVERYHIGH, label=False)
+    editor.deleteTags(tags=PRIORITYHIGH, label=False)
+    editor.deleteTags(tags=PRIORITYLOW, label=False)
 
 addHook("editor.setupMenus", setupMenu)
 mw.registerPlugin("Priority Switcher", 19)
